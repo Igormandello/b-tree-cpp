@@ -22,3 +22,9 @@ int MyInfo::getInfo()
 {
     return this->info;
 }
+
+ostream& operator<<(ostream& os, const MyInfo& info)
+{
+    os << info.info;
+    return os;
+}

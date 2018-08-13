@@ -9,6 +9,7 @@ class MyInfo : public Info
         MyInfo(int);
         int compareTo(Info*);
         int getInfo();
+        friend ostream& operator<<(ostream& os, const MyInfo& info);
 
     private:
         int info;

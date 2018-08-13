@@ -1,0 +1,34 @@
+# depslib dependency file v1.0
+1533909931 source:c:\users\u16179\desktop\b-tree-cpp\b-tree\btree.cpp
+	<iostream>
+	"Info.h"
+	"BTree.h"
+
+1533910739 c:\users\u16179\desktop\b-tree-cpp\b-tree\info.h
+	<iostream>
+
+1533910832 c:\users\u16179\desktop\b-tree-cpp\b-tree\btree.h
+	<iostream>
+	"Node.h"
+	"Info.h"
+
+1533910443 c:\users\u16179\desktop\b-tree-cpp\b-tree\node.h
+	"Info.h"
+	<iostream>
+
+1533911101 source:c:\users\u16179\desktop\b-tree-cpp\b-tree\main.cpp
+	<iostream>
+	"MyInfo.h"
+	"BTree.h"
+
+1533910855 c:\users\u16179\desktop\b-tree-cpp\b-tree\myinfo.h
+	"Info.h"
+
+1533910859 source:c:\users\u16179\desktop\b-tree-cpp\b-tree\myinfo.cpp
+	"Info.h"
+	"MyInfo.h"
+
+1533911088 source:c:\users\u16179\desktop\b-tree-cpp\b-tree\node.cpp
+	<stdlib.h>
+	"Node.h"
+

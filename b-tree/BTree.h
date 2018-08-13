@@ -11,8 +11,8 @@ class BTree
 {
     public:
         BTree(unsigned int n);
-        ostream& operator<< (ostream& os);
         void add(Info* i);
+        friend ostream& operator<<(ostream& os, const BTree& dt);
 
     private:
         Node* root;

@@ -11,10 +11,14 @@ BTree::BTree(unsigned int n)
 void BTree::add(Info* i)
 {
     if (this->root == NULL)
-        this->root = i;
+    {
+        this->root = new Node(this->n);
+        this->root->addInfo(i);
+    }
 }
 
-ostream& BTree::operator<<(ostream& os)
+ostream& operator<<(ostream& os, const BTree& tree)
 {
-    os << '{' << this.n << '}';
+    os << tree.n;
+    return os;
 }
