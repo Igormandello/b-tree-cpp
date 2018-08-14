@@ -9,6 +9,7 @@ class Info
 {
     public:
         virtual int compareTo(Info*) = 0;
+        virtual void print(ostream&) = 0;
 };
 
 #endif

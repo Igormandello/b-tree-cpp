@@ -4,7 +4,7 @@
 	"Info.h"
 	"BTree.h"
 
-1533910739 c:\users\u16179\desktop\b-tree-cpp\b-tree\info.h
+1534258855 c:\users\u16179\desktop\b-tree-cpp\b-tree\info.h
 	<iostream>
 
 1533910832 c:\users\u16179\desktop\b-tree-cpp\b-tree\btree.h
@@ -16,19 +16,19 @@
 	"Info.h"
 	<iostream>
 
-1533911101 source:c:\users\u16179\desktop\b-tree-cpp\b-tree\main.cpp
+1534258282 source:c:\users\u16179\desktop\b-tree-cpp\b-tree\main.cpp
 	<iostream>
 	"MyInfo.h"
 	"BTree.h"
 
-1533910855 c:\users\u16179\desktop\b-tree-cpp\b-tree\myinfo.h
+1534258760 c:\users\u16179\desktop\b-tree-cpp\b-tree\myinfo.h
 	"Info.h"
 
-1533910859 source:c:\users\u16179\desktop\b-tree-cpp\b-tree\myinfo.cpp
+1534258796 source:c:\users\u16179\desktop\b-tree-cpp\b-tree\myinfo.cpp
 	"Info.h"
 	"MyInfo.h"
 
-1533911088 source:c:\users\u16179\desktop\b-tree-cpp\b-tree\node.cpp
+1534258872 source:c:\users\u16179\desktop\b-tree-cpp\b-tree\node.cpp
 	<stdlib.h>
 	"Node.h"
 

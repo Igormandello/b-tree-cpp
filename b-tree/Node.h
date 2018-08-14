@@ -2,18 +2,22 @@
 
 #define _NODE_INCLUDED_
 #include "Info.h"
+#include <iostream>
+
+using namespace std;
 
 class Node
 {
     public:
-        Node(int);
+        Node(unsigned int);
         void addInfo(Info*);
-        int canAdd(Info*);
+        friend ostream& operator<<(ostream& os, const Node& dt);
 
     private:
         Info** infoArr;
         Node** ptrArr;
-        int order;
-}
+        unsigned int order;
+        unsigned int elements;
+};
 
 #endif
