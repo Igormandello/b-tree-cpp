@@ -25,6 +25,5 @@ int MyInfo::getInfo()
 
 void MyInfo::print(ostream& os)
 {
-    os << "aaa";
     os << this->info;
 }
