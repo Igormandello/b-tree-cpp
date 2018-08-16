@@ -10,7 +10,7 @@ int main()
 {
     try
     {
-        BTree* tree = new BTree(3);
+        BTree* tree = new BTree(2);
 
         int n;
         scanf("%i", &n);
@@ -19,7 +19,10 @@ int main()
             MyInfo* i = new MyInfo(n);
             tree->add(i);
 
-            cout << *tree << endl << endl;
+            cout << "Pre order: " << tree->preorder();
+            cout << "In order: " << tree->inorder();
+            cout << "Post order: " << tree->postorder();
+            cout << endl;
             scanf("%i", &n);
         }
     }
