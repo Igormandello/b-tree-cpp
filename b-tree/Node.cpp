@@ -51,9 +51,23 @@ void Node::removeInfo(Info* i)
         if (this->infoArr[n]->compareTo(i) >= 0)
             break;
 
-    if (this->elements == this->order - 1 && !this->isLeaf()) //The info array is full
+    if (this->elements == this->order - 1 && !this->isLeaf()) //The info array is full and has children
     {
-        cout << "To Do";
+        if ((n < this->elements && this->infoArr[n]->compareTo(i) > 0) || (n >= this->elements && this->ptrArr[n] != NULL)) //The info is in the nth pointer
+        {
+            Node* child = this->ptrArr[n];
+            child->removeInfo(i);
+
+            if (child->getInfoAmount() == 0)
+            {
+                delete this->ptrArr[n];
+                this->ptrArr[n] = NULL;
+            }
+        }
+        else if (n < this->elements && this->infoArr[n]->compareTo(i) == 0) //The info is in this node
+        {
+            cout << "To Do";
+        }
     }
     else //The info array isn't full or it's a leaf, so the node can't have children
         if (this->infoArr[n]->compareTo(i) == 0) //The element is what we want to remove
