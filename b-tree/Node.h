@@ -11,11 +11,14 @@ class Node
     public:
         Node(unsigned int);
         void addInfo(Info*);
+        void removeInfo(Info*);
+        bool isLeaf();
+        int getInfoAmount();
         Node** getChildren();
         string preorder();
         string inorder();
         string postorder();
-        friend ostream& operator<<(ostream& os, const Node& dt);
+        friend ostream& operator<<(ostream&, const Node&);
 
     private:
         Info** infoArr;

@@ -19,6 +19,19 @@ void BTree::add(Info* i)
     this->root->addInfo(i);
 }
 
+void BTree::remove(Info* i)
+{
+    if (this->root != NULL)
+    {
+        this->root->removeInfo(i);
+        if (this->root->getInfoAmount() == 0) // The root is now empty
+        {
+            delete this->root;
+            this->root = NULL;
+        }
+    }
+}
+
 string BTree::preorder()
 {
     stringstream ss;

@@ -10,9 +10,10 @@ using namespace std;
 class BTree
 {
     public:
-        BTree(unsigned int n);
-        void add(Info* i);
-        friend ostream& operator<<(ostream& os, const BTree& dt);
+        BTree(unsigned int);
+        void add(Info*);
+        void remove(Info*);
+        friend ostream& operator<<(ostream&, const BTree&);
         string preorder();
         string inorder();
         string postorder();

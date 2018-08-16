@@ -10,20 +10,25 @@ int main()
 {
     try
     {
-        BTree* tree = new BTree(2);
+        BTree* tree = new BTree(4);
 
         int n;
-        scanf("%i", &n);
+        char c;
+        scanf("%c %i%*c", &c, &n);
         while (n != 1337)
         {
             MyInfo* i = new MyInfo(n);
-            tree->add(i);
+
+            if (c == 'a')
+                tree->add(i);
+            else if (c == 'r')
+                tree->remove(i);
 
             cout << "Pre order: " << tree->preorder();
             cout << "In order: " << tree->inorder();
             cout << "Post order: " << tree->postorder();
             cout << endl;
-            scanf("%i", &n);
+            scanf("%c %i%*c", &c, &n);
         }
     }
     catch (invalid_argument err)
