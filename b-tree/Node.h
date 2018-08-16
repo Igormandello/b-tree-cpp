@@ -12,6 +12,9 @@ class Node
         Node(unsigned int);
         void addInfo(Info*);
         Node** getChildren();
+        string preorder();
+        string inorder();
+        string postorder();
         friend ostream& operator<<(ostream& os, const Node& dt);
 
     private:

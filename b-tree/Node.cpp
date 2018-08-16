@@ -1,6 +1,9 @@
+#include <sstream>
 #include <stdlib.h>
 #include <stdexcept>
 #include "Node.h"
+
+using namespace std;
 
 Node::Node(unsigned int n)
 {
@@ -45,6 +48,27 @@ void Node::addInfo(Info* i)
 Node** Node::getChildren()
 {
     return this->ptrArr;
+}
+
+string Node::preorder()
+{
+    stringstream ss;
+    ss << "To do";
+    return ss.str();
+}
+
+string Node::inorder()
+{
+    stringstream ss;
+    ss << "To do";
+    return ss.str();
+}
+
+string Node::postorder()
+{
+    stringstream ss;
+    ss << "To do";
+    return ss.str();
 }
 
 ostream& operator<<(ostream& os, const Node& node)
