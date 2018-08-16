@@ -107,7 +107,27 @@ string Node::inorder()
 string Node::postorder()
 {
     stringstream ss;
-    ss << "To do";
+    if (this->elements != this->order - 1) //The info array isn't full, so it can't have any children
+        for (int n = 0; n < this->elements; n++)
+        {
+            this->infoArr[n]->print(ss);
+            ss << ", ";
+        }
+    else
+    {
+        if (this->ptrArr[0] != NULL)
+            ss << this->ptrArr[0]->postorder();
+
+        for (int n = 0; n < this->order - 1; n++)
+        {
+            if (this->ptrArr[n + 1] != NULL)
+                ss << this->ptrArr[n + 1]->postorder();
+
+            this->infoArr[n]->print(ss);
+            ss << ", ";
+        }
+    }
+
     return ss.str();
 }
 
