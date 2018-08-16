@@ -22,21 +22,30 @@ void BTree::add(Info* i)
 string BTree::preorder()
 {
     stringstream ss;
-    ss << "To do" << endl;
+    if (this->root != NULL)
+        ss << this->root->preorder();
+
+    ss << endl;
     return ss.str();
 }
 
 string BTree::inorder()
 {
     stringstream ss;
-    ss << "To do" << endl;
+    if (this->root != NULL)
+        ss << this->root->inorder();
+
+    ss << endl;
     return ss.str();
 }
 
 string BTree::postorder()
 {
     stringstream ss;
-    ss << "To do" << endl;
+    if (this->root != NULL)
+        ss << this->root->postorder();
+
+    ss << endl;
     return ss.str();
 }
 
