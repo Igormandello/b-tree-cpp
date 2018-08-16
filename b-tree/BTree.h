@@ -13,6 +13,9 @@ class BTree
         BTree(unsigned int n);
         void add(Info* i);
         friend ostream& operator<<(ostream& os, const BTree& dt);
+        string preorder();
+        string inorder();
+        string postorder();
 
     private:
         Node* root;

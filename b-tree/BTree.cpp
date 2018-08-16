@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <cmath>
 #include <queue>
 #include "Info.h"
@@ -16,6 +17,27 @@ void BTree::add(Info* i)
         this->root = new Node(this->n);
 
     this->root->addInfo(i);
+}
+
+string BTree::preorder()
+{
+    stringstream ss;
+    ss << "To do" << endl;
+    return ss.str();
+}
+
+string BTree::inorder()
+{
+    stringstream ss;
+    ss << "To do" << endl;
+    return ss.str();
+}
+
+string BTree::postorder()
+{
+    stringstream ss;
+    ss << "To do" << endl;
+    return ss.str();
 }
 
 ostream& operator<<(ostream& os, const BTree& tree)
