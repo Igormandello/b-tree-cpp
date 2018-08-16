@@ -25,8 +25,10 @@ string BTree::preorder()
     if (this->root != NULL)
         ss << this->root->preorder();
 
-    ss << endl;
-    return ss.str();
+    string s = ss.str();
+    s = s.substr(0, s.size() - 2); //Removes the last comma + space
+    s += '\n';
+    return s;
 }
 
 string BTree::inorder()
@@ -35,8 +37,10 @@ string BTree::inorder()
     if (this->root != NULL)
         ss << this->root->inorder();
 
-    ss << endl;
-    return ss.str();
+    string s = ss.str();
+    s = s.substr(0, s.size() - 2); //Removes the last comma + space
+    s += '\n';
+    return s;
 }
 
 string BTree::postorder()
@@ -45,8 +49,10 @@ string BTree::postorder()
     if (this->root != NULL)
         ss << this->root->postorder();
 
-    ss << endl;
-    return ss.str();
+    string s = ss.str();
+    s = s.substr(0, s.size() - 2); //Removes the last comma + space
+    s += '\n';
+    return s;
 }
 
 ostream& operator<<(ostream& os, const BTree& tree)
