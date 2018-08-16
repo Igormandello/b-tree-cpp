@@ -60,7 +60,27 @@ string Node::preorder()
 string Node::inorder()
 {
     stringstream ss;
-    ss << "To do";
+    if (this->elements != this->order - 1) //The info array isn't full, so it can't have any children
+        for (int n = 0; n < this->elements; n++)
+        {
+            this->infoArr[n]->print(ss);
+            ss << ", ";
+        }
+    else
+    {
+        for (int n = 0; n < this->order - 1; n++)
+        {
+            if (this->ptrArr[n] != NULL)
+                ss << this->ptrArr[n]->inorder();
+
+            this->infoArr[n]->print(ss);
+            ss << ", ";
+        }
+
+        if (this->ptrArr[this->order - 1] != NULL)
+            ss << this->ptrArr[this->order - 1]->inorder();
+    }
+
     return ss.str();
 }
 
