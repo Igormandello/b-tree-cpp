@@ -11,6 +11,7 @@ class Node
     public:
         Node(unsigned int);
         void addInfo(Info*);
+        Node** getChildren();
         friend ostream& operator<<(ostream& os, const Node& dt);
 
     private:

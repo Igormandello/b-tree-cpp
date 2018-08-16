@@ -42,9 +42,14 @@ void Node::addInfo(Info* i)
     }
 }
 
+Node** Node::getChildren()
+{
+    return this->ptrArr;
+}
+
 ostream& operator<<(ostream& os, const Node& node)
 {
-    os << "{ info: [";
+    os << "{ ";
     if (node.elements > 0)
         node.infoArr[0]->print(os);
 
@@ -54,7 +59,7 @@ ostream& operator<<(ostream& os, const Node& node)
         node.infoArr[n]->print(os);
     }
 
-    os << "], children: [";
+    /*os << "], children: [";
     if (node.ptrArr[0] != NULL)
         os << *node.ptrArr[0];
     else
@@ -66,6 +71,7 @@ ostream& operator<<(ostream& os, const Node& node)
         else
             os << ", {}";
 
-    os << "] }";
+    os << "] }";*/
+    os << " }";
     return os;
 }

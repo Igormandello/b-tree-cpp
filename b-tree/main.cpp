@@ -18,6 +18,8 @@ int main()
         {
             MyInfo* i = new MyInfo(n);
             tree->add(i);
+
+            cout << *tree << endl << endl;
             scanf("%i", &n);
         }
     }
