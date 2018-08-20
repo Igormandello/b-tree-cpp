@@ -7,6 +7,7 @@ class MyInfo : public Info
 {
     public:
         MyInfo(int);
+        Info* clone(Info*);
         int compareTo(Info*);
         int getInfo();
         void print(ostream&);

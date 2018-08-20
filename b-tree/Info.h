@@ -8,6 +8,7 @@ using namespace std;
 class Info
 {
     public:
+        virtual Info* clone(Info*) = 0;
         virtual int compareTo(Info*) = 0;
         virtual void print(ostream&) = 0;
 };

@@ -1,3 +1,5 @@
+#include <typeinfo>
+#include <stdexcept>
 #include "Info.h"
 #include "MyInfo.h"
 
@@ -6,8 +8,20 @@ MyInfo::MyInfo(int i)
     this->info = i;
 }
 
+Info* MyInfo::clone(Info* info)
+{
+    if (typeid(*info) != typeid(this))
+        throw invalid_argument("The parameter must be an MyInfo instance");
+
+    MyInfo* n = new MyInfo(((MyInfo*)info)->info);
+    return n;
+}
+
 int MyInfo::compareTo(Info* info)
 {
+    if (typeid(*info) != typeid(this))
+        throw invalid_argument("The parameter must be an MyInfo instance");
+
     MyInfo* i = (MyInfo*)info;
 
     if (this->info > i->info)
