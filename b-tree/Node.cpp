@@ -55,41 +55,54 @@ void Node::removeInfo(Info* i)
     {
         if ((n < this->elements && this->infoArr[n]->compareTo(i) > 0) || (n >= this->elements && this->ptrArr[n] != NULL)) //The info is in the nth pointer
         {
-            Node* child = this->ptrArr[n];
-            child->removeInfo(i);
-
-            if (child->getInfoAmount() == 0)
-            {
-                delete this->ptrArr[n];
-                this->ptrArr[n] = NULL;
-            }
+            this->ptrArr[n]->removeInfo(i);
+            this->clearNode(n);
         }
         else if (n < this->elements && this->infoArr[n]->compareTo(i) == 0) //The info is in this node
         {
-            if (this->ptrArr[n + 1] != NULL)
-            {
-                delete this->infoArr[n];
-                this->infoArr[n] = this->ptrArr[n + 1]->popMin();
+            delete this->infoArr[n];
 
-                if (this->ptrArr[n + 1]->getInfoAmount() == 0)
-                {
-                    delete this->ptrArr[n + 1];
-                    this->ptrArr[n + 1] = NULL;
-                }
-            }
-            else if (this->ptrArr[n] != NULL)
+            if (this->ptrArr[n] != NULL)
             {
-                delete this->infoArr[n];
                 this->infoArr[n] = this->ptrArr[n]->popMax();
-
-                if (this->ptrArr[n]->getInfoAmount() == 0)
-                {
-                    delete this->ptrArr[n];
-                    this->ptrArr[n] = NULL;
-                }
+                this->clearNode(n);
+            }
+            else if (this->ptrArr[n + 1] != NULL)
+            {
+                this->infoArr[n] = this->ptrArr[n + 1]->popMin();
+                this->clearNode(n + 1);
             }
             else
-                cout << "To Do";
+            {
+                //Searches a child in the left first
+                int i = n - 1;
+                for (; i >= 0; i--)
+                    if (this->ptrArr[i] != NULL) //We've found a valid child
+                        break;
+
+                if (i != -1) //There is a child to the left
+                {
+                    for (int j = n; j >= i; j--) //Shifts the elements to the right
+                        this->infoArr[j] = this->infoArr[j - 1];
+
+                    this->infoArr[i] = this->ptrArr[i]->popMax();
+                    this->clearNode(i);
+                }
+                else
+                {
+                    //There is no child to the left, so we search the right
+                    i = n + 1;
+                    for (; i < this->order; i++)
+                        if (this->ptrArr[i] != NULL) //We've found a valid child
+                            break;
+
+                    for (int j = n; j < i - 1; j++) //Shifts the elements to the left
+                        this->infoArr[j] = this->infoArr[j + 1];
+
+                    this->infoArr[i - 1] = this->ptrArr[i]->popMin();
+                    this->clearNode(i);
+                }
+            }
         }
     }
     else //The info array isn't full or it's a leaf, so the node can't have children
@@ -110,12 +123,7 @@ Info* Node::popMax()
     if (this->ptrArr[this->order - 1] != NULL)
     {
         i = this->ptrArr[this->order - 1]->popMax();
-
-        if (this->ptrArr[this->order - 1]->getInfoAmount() == 0)
-        {
-            delete this->ptrArr[this->order - 1];
-            this->ptrArr[this->order - 1] = NULL;
-        }
+        this->clearNode(this->order - 1);
     }
     else
     {
@@ -132,12 +140,7 @@ Info* Node::popMin()
     if (this->ptrArr[0] != NULL)
     {
         i = this->ptrArr[0]->popMin();
-
-        if (this->ptrArr[0]->getInfoAmount() == 0)
-        {
-            delete this->ptrArr[0];
-            this->ptrArr[0] = NULL;
-        }
+        this->clearNode(0);
     }
     else
     {
@@ -282,4 +285,13 @@ ostream& operator<<(ostream& os, const Node& node)
     os << "] }";*/
     os << " }";
     return os;
+}
+
+void Node::clearNode(unsigned int n)
+{
+    if (this->ptrArr[n] != NULL && this->ptrArr[n]->getInfoAmount() == 0)
+    {
+        delete this->ptrArr[n];
+        this->ptrArr[n] = NULL;
+    }
 }

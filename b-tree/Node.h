@@ -27,6 +27,7 @@ class Node
         Node** ptrArr;
         unsigned int order;
         unsigned int elements;
+        void clearNode(unsigned int);
 };
 
 #endif
