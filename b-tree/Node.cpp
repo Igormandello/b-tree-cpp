@@ -66,7 +66,30 @@ void Node::removeInfo(Info* i)
         }
         else if (n < this->elements && this->infoArr[n]->compareTo(i) == 0) //The info is in this node
         {
-            cout << "To Do";
+            if (this->ptrArr[n + 1] != NULL)
+            {
+                delete this->infoArr[n];
+                this->infoArr[n] = this->ptrArr[n + 1]->popMin();
+
+                if (this->ptrArr[n + 1]->getInfoAmount() == 0)
+                {
+                    delete this->ptrArr[n + 1];
+                    this->ptrArr[n + 1] = NULL;
+                }
+            }
+            else if (this->ptrArr[n] != NULL)
+            {
+                delete this->infoArr[n];
+                this->infoArr[n] = this->ptrArr[n]->popMax();
+
+                if (this->ptrArr[n]->getInfoAmount() == 0)
+                {
+                    delete this->ptrArr[n];
+                    this->ptrArr[n] = NULL;
+                }
+            }
+            else
+                cout << "To Do";
         }
     }
     else //The info array isn't full or it's a leaf, so the node can't have children
@@ -77,37 +100,52 @@ void Node::removeInfo(Info* i)
 
             //Shifts the array
             for (int j = n; j < this->elements; j++)
-            {
-                cout << j;
                 this->infoArr[j] = this->infoArr[j + 1];
-            }
         }
 }
 
 Info* Node::popMax()
 {
+    Info* i;
     if (this->ptrArr[this->order - 1] != NULL)
-        return this->ptrArr[this->order - 1]->popMax();
+    {
+        i = this->ptrArr[this->order - 1]->popMax();
+
+        if (this->ptrArr[this->order - 1]->getInfoAmount() == 0)
+        {
+            delete this->ptrArr[this->order - 1];
+            this->ptrArr[this->order - 1] = NULL;
+        }
+    }
     else
     {
-        Info* i = this->infoArr[this->elements - 1]->clone();
+        i = this->infoArr[this->elements - 1]->clone();
         this->removeInfo(i);
-
-        return i;
     }
+
+    return i;
 }
 
 Info* Node::popMin()
 {
+    Info* i;
     if (this->ptrArr[0] != NULL)
-        return this->ptrArr[0]->popMin();
+    {
+        i = this->ptrArr[0]->popMin();
+
+        if (this->ptrArr[0]->getInfoAmount() == 0)
+        {
+            delete this->ptrArr[0];
+            this->ptrArr[0] = NULL;
+        }
+    }
     else
     {
-        Info* i = this->infoArr[0]->clone();
+        i = this->infoArr[0]->clone();
         this->removeInfo(i);
-
-        return i;
     }
+
+    return i;
 }
 
 bool Node::isLeaf()

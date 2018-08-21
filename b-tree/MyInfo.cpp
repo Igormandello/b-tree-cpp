@@ -16,7 +16,7 @@ Info* MyInfo::clone()
 
 int MyInfo::compareTo(Info* info)
 {
-    if (typeid(*info) != typeid(this))
+    if (typeid(*info) != typeid(*this))
         throw invalid_argument("The parameter must be an MyInfo instance");
 
     MyInfo* i = (MyInfo*)info;

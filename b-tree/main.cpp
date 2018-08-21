@@ -24,6 +24,7 @@ int main()
             else if (c == 'r')
                 tree->remove(i);
 
+            cout << *tree << endl;
             cout << "Pre order: " << tree->preorder();
             cout << "In order: " << tree->inorder();
             cout << "Post order: " << tree->postorder();
