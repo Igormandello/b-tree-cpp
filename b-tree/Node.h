@@ -12,6 +12,8 @@ class Node
         Node(unsigned int);
         void addInfo(Info*);
         void removeInfo(Info*);
+        Info* popMax();
+        Info* popMin();
         bool isLeaf();
         int getInfoAmount();
         Node** getChildren();

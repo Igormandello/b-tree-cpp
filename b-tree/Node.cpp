@@ -84,6 +84,32 @@ void Node::removeInfo(Info* i)
         }
 }
 
+Info* Node::popMax()
+{
+    if (this->ptrArr[this->order - 1] != NULL)
+        return this->ptrArr[this->order - 1]->popMax();
+    else
+    {
+        Info* i = this->infoArr[this->elements - 1]->clone();
+        this->removeInfo(i);
+
+        return i;
+    }
+}
+
+Info* Node::popMin()
+{
+    if (this->ptrArr[0] != NULL)
+        return this->ptrArr[0]->popMin();
+    else
+    {
+        Info* i = this->infoArr[0]->clone();
+        this->removeInfo(i);
+
+        return i;
+    }
+}
+
 bool Node::isLeaf()
 {
     if (this->elements < this->order - 1)

@@ -8,12 +8,9 @@ MyInfo::MyInfo(int i)
     this->info = i;
 }
 
-Info* MyInfo::clone(Info* info)
+Info* MyInfo::clone()
 {
-    if (typeid(*info) != typeid(this))
-        throw invalid_argument("The parameter must be an MyInfo instance");
-
-    MyInfo* n = new MyInfo(((MyInfo*)info)->info);
+    MyInfo* n = new MyInfo(this->info);
     return n;
 }
 
