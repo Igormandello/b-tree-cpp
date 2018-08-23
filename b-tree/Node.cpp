@@ -53,7 +53,7 @@ void Node::removeInfo(Info* i)
 
     if (this->elements == this->order - 1 && !this->isLeaf()) //The info array is full and has children
     {
-        if ((n < this->elements && this->infoArr[n]->compareTo(i) > 0) || (n >= this->elements && this->ptrArr[n] != NULL)) //The info is in the nth pointer
+        if (((n < this->elements && this->infoArr[n]->compareTo(i) > 0) || n >= this->elements) && this->ptrArr[n] != NULL) //The info is in the nth pointer
         {
             this->ptrArr[n]->removeInfo(i);
             this->clearNode(n);
